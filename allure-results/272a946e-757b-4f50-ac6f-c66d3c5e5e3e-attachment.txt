@@ -1,0 +1,13 @@
+responseBody {
+  statusCode: 200,
+  status: 'SUCCESS',
+  message: 'Successfully Signed in',
+  exceptionMessage: null,
+  data: {
+    jwt: 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2cnVzaGFiMTE1QGdtYWlsLmNvbSIsInJvbGVzIjoiUk9MRV9VU0VSIiwiZXhwIjoxNzUxOTExNzIyLCJhY3Rpb25zIjpbeyJhdXRob3JpdHkiOiJST0xFX1VTRVIifV0sInVzZXIiOiJ7XCJpZFwiOjE0MzMsXCJhY2NvdW50SWRcIjpcIlVTTlkzME5CSVwiLFwidXNlcm5hbWVcIjpcInZydXNoYWIxMTVAZ21haWwuY29tXCIsXCJmaXJzdE5hbWVcIjpcIlZydXNoYWIgXCIsXCJtaWRkbGVOYW1lXCI6bnVsbCxcImxhc3ROYW1lXCI6XCJjdXN0b21cIixcImVtYWlsXCI6XCJ2cnVzaGFiMTE1QGdtYWlsLmNvbVwiLFwicHJvZmlsZUltYWdlXCI6bnVsbCxcImVudlwiOlwiYmV0YVwiLFwibG9naW5UeXBlXCI6XCJDVVNUT01cIixcInJvbGVJZFwiOjMsXCJpcEFkZHJlc3NcIjpudWxsfSIsImlhdCI6MTc1MTM5MzMyMn0.SlkwvzwFgD-vo02nYKGHbUSC1Ki4wTNHkm188n_SU3M',
+    apiVersion: '1.0.471',
+    message: 'Successfully Signed in',
+    status: 'SUCCESS',
+    activeProfile: 'beta'
+  }
+}

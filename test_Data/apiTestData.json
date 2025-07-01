@@ -1,0 +1,7 @@
+{
+    "JoulezMetaData":{
+        "login":{
+            "endPoint":"authenticate"
+        }
+    }
+}
