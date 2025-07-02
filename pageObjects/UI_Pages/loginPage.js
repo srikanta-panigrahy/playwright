@@ -1,6 +1,6 @@
-const { excuteSteps } = require("../../utilites/actions");
+const { excuteSteps } = require("../../utilities/actions");
 const { expect } = require("@playwright/test");
-const { highlightElement } = require("../../utilites/highlight_element");
+const { highlightElement } = require("../../utilities/highlight_element");
 const uiTestData = require("../../test_Data/testData.json");
 exports.LoginPage = class LoginPage {
   constructor(test, page) {

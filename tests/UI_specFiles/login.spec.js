@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 const sections = require("../../pageObjects/UI_Pages/pageIndex");
 const path = require("path");
 require("dotenv").config();
-const { readExcelData } = require("../../utilites/readExcel.js");
+const { readExcelData } = require("../../utilities/readExcel.js");
 
 test.describe("Login Tests", () => {
   test.only("Login using .env credentials", async ({ page }) => {
