@@ -44,8 +44,6 @@ pipeline {
             echo 'Archiving test results and reports...'
             archiveArtifacts artifacts: 'allure-results/**', allowEmptyArchive: true
             archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
-            // archiveArtifacts artifacts: 'test-results/**', allowEmptyArchive: true
-
             echo 'Publishing Allure report...'
             allure([
                 reportBuildPolicy: 'ALWAYS',
