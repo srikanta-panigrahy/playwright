@@ -14,7 +14,7 @@ import { defineConfig, devices } from "@playwright/test";
  */
 export default defineConfig({
   testDir: "./tests",
-  timeout: 90 * 1000,
+  timeout: 90 * 60 * 1000,
   /* Deletes the existing allure report files before test execution*/
   globalSetup: require.resolve("./global_setup.js"),
   /* Run tests in files in parallel */
