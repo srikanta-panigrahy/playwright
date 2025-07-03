@@ -4,7 +4,7 @@ function readExcelData(filePath, sheetName) {
   console.log(filePath);
   const workbook = xlsx.readFile(filePath);
   const worksheet = workbook.Sheets[sheetName];
-  return xlsx.utils.sheet_to_json(worksheet); // returns array of objects
+  return xlsx.utils.sheet_to_json(worksheet);
 }
 function writeExcelData(filePath, sheetName, updatedData) {
   const worksheet = xlsx.utils.json_to_sheet(updatedData);
