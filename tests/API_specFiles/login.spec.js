@@ -1,8 +1,8 @@
 const { test, expect } = require("@playwright/test");
 const uiTestData = require("../../test_Data/testData.json");
 const apiTestData = require("../../test_Data/apiTestData.json");
-const paylodsFile = require("../../utilites/payloads");
-const statuscodesFile = require("../../utilites/statusCodes");
+const paylodsFile = require("../../utilities/payloads");
+const statuscodesFile = require("../../utilities/statusCodes");
 const fs = require("fs");
 const path = require("path");
 require("dotenv").config();

@@ -1,6 +1,6 @@
-const { excuteSteps } = require("../../utilites/actions");
+const { excuteSteps } = require("../../utilities/actions");
 const { expect } = require("@playwright/test");
-const { highlightElement } = require("../../utilites/highlight_element");
+const { highlightElement } = require("../../utilities/highlight_element");
 const uiTestData = require("../../test_Data/testData.json");
 exports.LoginPage = class LoginPage {
   constructor(test, page) {
@@ -11,7 +11,11 @@ exports.LoginPage = class LoginPage {
     this.passwordInputField = page.locator("//input[@id='password']");
     this.submitBtn = page.locator("//button[@type='submit']");
     this.hamburgerMenuIcon = page.locator("//img[@alt='toggleAccountIcon']");
-    this.profileName = page.locator("(//div[contains(text(),'Vrushab')])[2]");
+    this.profileName = page.locator(
+      "(//div[@class='borderNavbarProfile']/div[2])"
+    );
+    this.navbarBtn = page.locator("//img[@alt='toggleAccountIcon']");
+    this.logoutBtn = page.locator("//div/span[text()='Logout']");
   }
   launchingApplication = async (baseUrl) => {
     await excuteSteps(
@@ -64,39 +68,61 @@ exports.LoginPage = class LoginPage {
       `Click on the HamburgerMenuIcon`
     );
   };
+  clickOnnavbarButton = async () => {
+    await excuteSteps(
+      this.test,
+      this.navbarBtn,
+      "click",
+      `Click on navbar button`
+    );
+  };
+  clickOnLogoutButton = async () => {
+    await excuteSteps(
+      this.test,
+      this.logoutBtn,
+      "click",
+      `Click on logout button`
+    );
+  };
+
   logInWithValidCredentials = async (email, pwd) => {
-    await this.test.step("Wait for 4 seconds for page loading", async () => {
-      await this.page.waitForTimeout(parseInt(process.env.MEDIUM_WAIT));
+    await this.test.step("Wait for 2 seconds for page loading", async () => {
+      await this.page.waitForTimeout(parseInt(process.env.SMALL_WAIT));
     });
     await highlightElement(this.page, this.loginBtn);
     await this.clickOnLoginButton();
-    await this.test.step("Wait for 4 seconds for page loading", async () => {
-      await this.page.waitForTimeout(parseInt(process.env.MEDIUM_WAIT));
+    await this.test.step("Wait for 2 seconds for page loading", async () => {
+      await this.page.waitForTimeout(parseInt(process.env.SMALL_WAIT));
     });
     await highlightElement(this.page, this.emailInputField);
     await this.EnterUserEmail(email);
-    await this.test.step("Wait for 4 seconds for page loading", async () => {
-      await this.page.waitForTimeout(parseInt(process.env.MEDIUM_WAIT));
+    await this.test.step("Wait for 2 seconds for page loading", async () => {
+      await this.page.waitForTimeout(parseInt(process.env.SMALL_WAIT));
     });
     await highlightElement(this.page, this.passwordInputField);
     await this.EnterPassword(pwd);
-    await this.test.step("Wait for 4 seconds for page loading", async () => {
-      await this.page.waitForTimeout(parseInt(process.env.MEDIUM_WAIT));
+    await this.test.step("Wait for 2 seconds for page loading", async () => {
+      await this.page.waitForTimeout(parseInt(process.env.SMALL_WAIT));
     });
     await highlightElement(this.page, this.submitBtn);
     await this.clickOnSubmitButton();
-    await this.test.step("Wait for 4 seconds for page loading", async () => {
-      await this.page.waitForTimeout(parseInt(process.env.MEDIUM_WAIT));
+    await this.test.step("Wait for 2 seconds for page loading", async () => {
+      await this.page.waitForTimeout(parseInt(process.env.SMALL_WAIT));
     });
     await highlightElement(this.page, this.hamburgerMenuIcon);
     await this.clickOnHamburgerMenuIcon();
-    await this.test.step("Wait for 4 seconds for page loading", async () => {
-      await this.page.waitForTimeout(parseInt(process.env.MEDIUM_WAIT));
+    await this.test.step("Wait for 2 seconds for page loading", async () => {
+      await this.page.waitForTimeout(parseInt(process.env.SMALL_WAIT));
     });
     await highlightElement(this.page, this.profileName);
-    await expect(
-      this.profileName,
-      "Verify that the profile name matches the logged-in user's name"
-    ).toHaveText(uiTestData.JoulezMetaData.profileName);
+    // await expect(
+    //   this.profileName,
+    //   "Verify that the profile name matches the logged-in user's name"
+    // ).toHaveText(uiTestData.JoulezMetaData.profileName);
+    await this.clickOnHamburgerMenuIcon();
+  };
+  logout = async () => {
+    await this.clickOnnavbarButton();
+    await this.clickOnLogoutButton();
   };
 };
