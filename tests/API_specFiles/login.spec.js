@@ -1,5 +1,6 @@
 const { test, expect } = require("@playwright/test");
 const uiTestData = require("../../test_Data/testData.json");
+const axios = require("axios")
 const apiTestData = require("../../test_Data/apiTestData.json");
 const paylodsFile = require("../../utilites/payloads");
 const statuscodesFile = require("../../utilites/statusCodes");
@@ -11,22 +12,18 @@ const envConfig = dotenv.parse(fs.readFileSync(".env"));
 const baseUrl = process.env.API_BASE_URL;
 const email = process.env.USER_EMAILID;
 const password = process.env.PASSWORD;
-test("Creating auth token using valid user credentials", async ({
-  request,
-}) => {
+test("Creating auth token using valid user credentials", async () => {
   const endpoint = apiTestData.JoulezMetaData.login.endPoint;
-  const payloadaData = paylodsFile.loginPayload(email, password);
-  const response = await request.post(`${baseUrl}${endpoint}`, {
+  const payloadData = paylodsFile.loginPayload(email, password);
+  const response = await axios.post(`${baseUrl}${endpoint}`, payloadData, {
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    data: payloadaData,
+      "Content-Type": "application/json"
+    }
   });
-
-  const responseBody = await response.json();
-
-  expect(response.status()).toBe(statuscodesFile.STATUS_CODES.OK);
+  const responseBody = await response.data;
+  expect(response.status).toBe(statuscodesFile.STATUS_CODES.OK)
+  console.log("responseBody=",responseBody)
   const accessToken = responseBody.data.jwt;
   envConfig.TOKEN = accessToken;
   const updatedEnv = Object.entries(envConfig)
