@@ -1,7 +1,5 @@
 const { excuteSteps } = require("../../utilities/actions");
-const { expect } = require("@playwright/test");
 const { highlightElement } = require("../../utilities/highlight_element");
-const uiTestData = require("../../test_Data/testData.json");
 exports.LoginPage = class LoginPage {
   constructor(test, page) {
     this.test = test;
@@ -114,11 +112,11 @@ exports.LoginPage = class LoginPage {
     await this.test.step("Wait for 2 seconds for page loading", async () => {
       await this.page.waitForTimeout(parseInt(process.env.SMALL_WAIT));
     });
-    await highlightElement(this.page, this.profileName);
-    // await expect(
-    //   this.profileName,
-    //   "Verify that the profile name matches the logged-in user's name"
-    // ).toHaveText(uiTestData.JoulezMetaData.profileName);
+    // await highlightElement(this.page, this.profileName);
+    // // await expect(
+    // //   this.profileName,
+    // //   "Verify that the profile name matches the logged-in user's name"
+    // // ).toHaveText(uiTestData.JoulezMetaData.profileName);
     await this.clickOnHamburgerMenuIcon();
   };
   logout = async () => {

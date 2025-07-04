@@ -1,4 +1,4 @@
-const { test, expect } = require("@playwright/test");
+const { test } = require("@playwright/test");
 const sections = require("../../pageObjects/UI_Pages/pageIndex");
 const path = require("path");
 require("dotenv").config();

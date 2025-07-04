@@ -1,11 +1,9 @@
 const { test, expect } = require("@playwright/test");
-const uiTestData = require("../../test_Data/testData.json");
 const axios = require("axios")
 const apiTestData = require("../../test_Data/apiTestData.json");
 const paylodsFile = require("../../utilities/payloads");
 const statuscodesFile = require("../../utilities/statusCodes");
 const fs = require("fs");
-const path = require("path");
 require("dotenv").config();
 const dotenv = require("dotenv");
 const envConfig = dotenv.parse(fs.readFileSync(".env"));
@@ -23,7 +21,6 @@ test("Creating auth token using valid user credentials", async () => {
   });
   const responseBody = await response.data;
   expect(response.status).toBe(statuscodesFile.STATUS_CODES.OK)
-  console.log("responseBody=",responseBody)
   const accessToken = responseBody.data.jwt;
   envConfig.TOKEN = accessToken;
   const updatedEnv = Object.entries(envConfig)
