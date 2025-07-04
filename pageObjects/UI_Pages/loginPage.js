@@ -112,11 +112,6 @@ exports.LoginPage = class LoginPage {
     await this.test.step("Wait for 2 seconds for page loading", async () => {
       await this.page.waitForTimeout(parseInt(process.env.SMALL_WAIT));
     });
-    // await highlightElement(this.page, this.profileName);
-    // // await expect(
-    // //   this.profileName,
-    // //   "Verify that the profile name matches the logged-in user's name"
-    // // ).toHaveText(uiTestData.JoulezMetaData.profileName);
     await this.clickOnHamburgerMenuIcon();
   };
   logout = async () => {
