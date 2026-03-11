@@ -25,6 +25,9 @@ exports.excuteSteps = async (test, element, action, discription, data) => {
       case "hover":
         await element.hover();
         break;
+      case "scroll":
+        await element.scrollIntoViewIfNeeded(); 
+        break;
     }
   });
 };
